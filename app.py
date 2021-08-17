@@ -35,7 +35,7 @@ class Model:
 
         #return the image
         return image
-    def get_image_label(image_path, label):
+    def get_image_label(self, image_path, label):
         """
         Takes an image file path name and the associated label, 
         and processes the image and returns a tuple of (image, label)
@@ -44,7 +44,7 @@ class Model:
 
         return image, label
 
-    def create_data_batches(X, y=None, batch_size=32, valid_data=False, test_data=False):
+    def create_data_batches(self, X, y=None, batch_size=32, valid_data=False, test_data=False):
         """
         Create batches of data out of image (X) and label(y) pairs.
         Shuffles the data if it's training data but doesn't shuffle if it's validation data.
@@ -76,5 +76,5 @@ class Model:
             data_batch = data.batch(batch_size)
             return data_batch
 
-model = Model.load_model('model/20210704-01-M1625361368-full-image-set-mobilenetv2-Adam.h5')
-data = Model.create_data_batches()
+model = Model().load_model('model\20210704-01-M1625361368-full-image-set-mobilenetv2-Adam.h5')
+data = Model().create_data_batches()
