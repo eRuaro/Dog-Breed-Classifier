@@ -77,4 +77,5 @@ class Model:
             return data_batch
 
 model = Model().load_model('model\20210704-01-M1625361368-full-image-set-mobilenetv2-Adam.h5')
-data = Model().create_data_batches()
+file = st.file_uploader("Select an image to classify")
+data = Model().create_data_batches(test_data=True, X=file)
