@@ -1,5 +1,7 @@
 import tensorflow as tf
 import tensorflow_hub as hub 
+import numpy as np
+import pandas as pd
 
 class Model:
     def load_model(self, model_path):
@@ -75,3 +77,14 @@ class Model:
 
             data_batch = data.batch(batch_size)
             return data_batch
+
+    def get_pred_labels(prediction_probabilities):
+        """
+        Turns an array of prediction probabilities into a label
+        """
+        path = 'C:\\Users\\Erickson Neil Ruaro\\Documents\\GitHub\\Dog-Breed-Classifier\\labels\\labels.csv'
+        labels_csv = pd.read_csv(path)
+        labels = labels_csv['breed'].to_numpy()
+        unique_breeds = np.unique(labels)
+
+        return unique_breeds[np.argmax(prediction_probabilities)]
